@@ -1,0 +1,3 @@
+6.3:
+
+Es gilt Ax=w²x=lamda*x d.h w²=lamda dh w=sqrt(lamda) wobei w die Kreisfrequenz ist
