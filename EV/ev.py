@@ -21,5 +21,13 @@ def power_method(A: np.ndarray[complex], v0: np.ndarray[complex], tol: float=1e-
     """
     v = v0.astype(complex) # Guarantee that the initial vector is complex
     lambdas = np.zeros(max_iter, dtype=complex)
+    v_h0 = v.conj().T
+    lambdas[0] = (v_h0.dot(A.dot(v))) / (v_h0.dot(v))
+    for i in range(1,max_iter+1):
+        v= A.dot(v)/np.linalg.norm(A.dot(v)) #Iterationsvorschrift von Z mta3 zebi
+        v_h= v.conj().T  #hermitesch adjungierten v
+        lambdas[i] =(v_h.dot(A.dot(v)))/(v_h.dot(v))
+        if abs(lambdas[i] - lambdas[i - 1]) > tol:
+            break
 
     return np.array(lambdas, dtype=complex), v
