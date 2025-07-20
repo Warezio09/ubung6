@@ -7,7 +7,7 @@ if version_info[0] < 3 or version_info[1] < 10:
 import numpy as np
 
 
-def power_method(A: np.ndarray[complex], v0: np.ndarray[complex], tol: float=1e-6, max_iter: int=1000) -> tuple:
+def power_method(A: np.ndarray[complex], v0: np.ndarray[complex], tol: float=1e-6, max_iter: int=100) -> tuple:
     """
         This method shall implement the power method,
         that calculates the eigenvalue with the greatest absolute value
@@ -29,4 +29,5 @@ def power_method(A: np.ndarray[complex], v0: np.ndarray[complex], tol: float=1e-
         lambdas.append((np.vdot(v,A.dot(v)))/np.vdot(v,v))
         if abs(lambdas[i] - lambdas[i - 1]) < tol:
             break
+
     return np.array(lambdas, dtype=complex), v
